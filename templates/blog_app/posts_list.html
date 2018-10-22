@@ -1,0 +1,14 @@
+{% extends "blog_app/base.html" %}
+{% block body_block %}
+  {% for post in posts_list %}
+
+  <div >
+    <h1> <a href="{% url 'posts_detail' pk=post.pk%}"> {{post.title}}</a> </h1>
+  </div>
+  <div class="date">
+    <p>Published date : {{post.published}}</p>
+  </div>
+  {% empty %}
+  <h4 style="color:#007bff">No blogs yet </h4>
+  {% endfor %}
+{% endblock %}

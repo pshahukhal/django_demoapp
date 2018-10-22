@@ -1,0 +1,7 @@
+{% extends "blog_app/base.html" %}
+{% block body_block %}
+{% for post in posts %}
+  <p>Created date : {{post.created}}</p>
+  <a href="{%url 'posts_detail' pk= post.pk %}">{{post.title}}</a>
+{%endfor%}
+{% endblock %}

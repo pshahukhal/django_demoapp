@@ -24,7 +24,7 @@
   {% for comment in posts.comments.all %}
   <br>
       <p>{{ comment.text|safe|linebreaks }}</p>
-      <p>Posted by: <strong>{{ comment.author }}</strong></p>
+      <p>Posted by: <strong>{{ comment.author }}</strong> on : {{comment.created}}</p>
   {% empty %}
       <p>No comments posted.</p>
   {% endfor %}

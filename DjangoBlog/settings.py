@@ -18,7 +18,7 @@ STATIC_DIR = os.path.join(BASE_DIR,'static')
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
-
+# test
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'fww2^e7ksw#ep4c0=m+rq&)!q7wh$!y6z!sulhw4v9os1x2huj'
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'blog_app',
 ]
 
@@ -81,6 +82,16 @@ DATABASES = {
     }
 }
 
+
+#  rest_framework
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

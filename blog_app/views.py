@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from blog_app.models import Comments,Posts
 from blog_app.forms import CommentForm,PostForm
 from django.urls import reverse_lazy
+from rest_framework import viewsets
+from blog_app.serializers import PostSerializer
 # Create your views here.
 
 class AboutView(TemplateView):
@@ -44,6 +46,10 @@ class DraftListView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         return Posts.objects.filter(published__isnull=True).order_by('created')
 
+class PostsRestView(viewsets.ModelViewSet):
+    queryset = Posts.objects.all()
+    serializer_class = PostSerializer
+
 #####Start of the comments section #######
 
 @login_required
@@ -52,7 +58,7 @@ def posts_publish(request, pk):
     post.publish()
     return redirect('posts_detail', pk=pk)
 
-@login_required
+
 def add_comment(request, pk):
     post = get_object_or_404(Posts, pk=pk)
     if request.method == "POST":

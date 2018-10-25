@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'',include('blog_app.urls')),
     url(r'^admin/', admin.site.urls,name="admin"),
     url(r'^accounts/login$',views.login,name="login"),
-    url(r'^accounts/logout$',views.logout,name="logout",kwargs={'next_page':'/'})
+    url(r'^accounts/logout$',views.logout,name="logout",kwargs={'next_page':'/'}),
+    # url(r'^api-auth/$', include('blog_app.urls')),
 
 ]
